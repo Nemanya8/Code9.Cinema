@@ -19,31 +19,16 @@ namespace Code9.Infrastructure.Repositories
             return await _dbContext.Cinemas.ToListAsync();
         }
 
-        public void addCinema(string? name, string? city, string? street, int numSeats)
+        public async Task<Cinema> addCinema(Cinema newCinema)
         {
-            Cinema newCinema = new();
-            
-            newCinema.Name = name;
-            newCinema.City = city;
-            newCinema.Street = street;
-            newCinema.NumberOfAuditoriums = numSeats;
-
             _dbContext.Cinemas.Add(newCinema);
+            return newCinema;
         }
 
-        public Cinema updateCinema(Guid ID, string? name, string? city, string? street, int numSeats)
+        public async Task<Cinema> updateCinema(Cinema newCinema)
         {
-            Cinema updatedCinema = _dbContext.Find<Cinema>(ID);
-
-            if(updatedCinema != null)
-            {
-                updatedCinema.Name = name;
-                updatedCinema.City = city;
-                updatedCinema.Street = street;
-                updatedCinema.NumberOfAuditoriums = numSeats;
-            }
-
-            return updatedCinema;
+            _dbContext.Cinemas.Update(newCinema);
+            return newCinema;
         }
     }
 }

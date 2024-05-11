@@ -6,8 +6,8 @@ namespace Code9.Domain.Interfaces
     {
         public Task<List<Cinema>> GetAllCinemas();
 
-        public void addCinema(string? name, string? city, string? street, int numSeats);
+        public Task<Cinema> addCinema(Cinema newCinema);
 
-        public Cinema updateCinema(Guid ID, string? name, string? city, string? street, int numseats);
+        public Task<Cinema> updateCinema(Cinema cinema);
     }
 }
