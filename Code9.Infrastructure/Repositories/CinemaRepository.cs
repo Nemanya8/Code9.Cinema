@@ -21,7 +21,7 @@ namespace Code9.Infrastructure.Repositories
 
         public void addCinema(string? name, string? city, string? street, int numSeats)
         {
-            Cinema newCinema = new;
+            Cinema newCinema = new();
             
             newCinema.Name = name;
             newCinema.City = city;
